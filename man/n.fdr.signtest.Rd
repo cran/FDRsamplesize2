@@ -13,11 +13,11 @@ n.fdr.signtest(fdr, pwr, p, pi0.hat = "BH")
 
 \item{p}{Pr(X>0), as in Noether (JASA 1987)}
 
-\item{pi0.hat}{approximation method for null proportion}
+\item{pi0.hat}{method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)}
 }
 \value{
 A list with the following components:
-\item{n}{a sample size estimate}
+\item{n}{sample size estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}
@@ -30,6 +30,9 @@ A list with the following components:
 }
 \description{
 Find the sample size needed to have a desired false discovery rate and average power for a large number of sign tests.
+}
+\note{
+For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
 }
 \examples{
 p = rep(c(0.8, 0.5), c(100, 900));

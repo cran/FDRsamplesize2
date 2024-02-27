@@ -17,7 +17,7 @@ power.signtest(n, alpha, p)
 Vector of power estimates for two-sided tests
 }
 \description{
-Use the Noether (1987) formula to compute the power of the sign test
+Use the Noether (1987) formula to compute the power of the sign test, which is based on asymptotic normal approximation.
 }
 \details{
 In most applications, the null effect size will be designated by p = 0.5

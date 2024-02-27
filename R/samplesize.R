@@ -4,9 +4,9 @@
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
 #' @param rho  population correlation coefficient (vector)
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -51,9 +51,9 @@ n.fdr.tcorr=function(fdr,pwr,rho,pi0.hat="BH")
 #' @param p1  probability in one group (vector)
 #' @param p2  probability in other group (vector)
 #' @param alternative one- or two-sided test
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{per-group sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -63,6 +63,7 @@ n.fdr.tcorr=function(fdr,pwr,rho,pi0.hat="BH")
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
+#' @note For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
 #' @examples
 #' set.seed(1234);
 #' p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
@@ -97,9 +98,9 @@ n.fdr.twoprop <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat =
 #' @param p1  probability in one group (vector)
 #' @param p2  probability in other group (vector)
 #' @param alternative one- or two-sided test
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{per-group sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -143,10 +144,10 @@ n.fdr.fisher <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = 
 #' @param rho fold-change, usual null hypothesis is that rho=1 (vector)
 #' @param mu0 average count in control group (vector)
 #' @param w ratio of the total number of reads mapped between the two groups
-#' @param type Type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score.
-#' @param pi0.hat Approximation method for null proportion
+#' @param type type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score.
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{per-group sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -190,9 +191,9 @@ n.fdr.poisson <- function(fdr, pwr, rho, mu0, w, type, pi0.hat = "BH") {
 #' @param pwr desired average power (scalar numeric)
 #' @param p1 Pr(X>0), as in Noether (JASA 1987)
 #' @param p2 Pr(X+X'>0), as in Noether (JASA 1987)
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -234,9 +235,9 @@ n.fdr.signrank <- function(fdr, pwr, p1, p2, pi0.hat = "BH") {
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
 #' @param p Pr(X>0), as in Noether (JASA 1987)
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -247,6 +248,7 @@ n.fdr.signrank <- function(fdr, pwr, p1, p2, pi0.hat = "BH") {
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
 #' @references Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.
+#' @note For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
 #' @examples
 #' p = rep(c(0.8, 0.5), c(100, 900));
 #' n.fdr.signtest(fdr = 0.1, pwr = 0.8, p = p, pi0.hat = "BH")
@@ -277,9 +279,9 @@ n.fdr.signtest <- function(fdr, pwr, p, pi0.hat = "BH") {
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
-#' @param pi0.hat Approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -320,10 +322,10 @@ n.fdr.ranksum <- function(fdr, pwr, p, pi0.hat = "BH") {
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
 #' @param theta sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test (vector)
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @param k the number of groups to be compared
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{per-group sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -364,9 +366,9 @@ n.fdr.oneway <- function(fdr, pwr, theta, k, pi0.hat = "BH") {
 #' @param pwr desired average power (scalar numeric)
 #' @param logHR log hazard ratio (vector)
 #' @param v variance of predictor variable (vector)
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{number of events estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -376,6 +378,7 @@ n.fdr.oneway <- function(fdr, pwr, theta, k, pi0.hat = "BH") {
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
+#' @note For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
 #' @examples
 #' log.HR=log(rep(c(1,2),c(900,100)))
 #' v=rep(1,1000)
@@ -410,10 +413,10 @@ n.fdr.coxph <- function(fdr, pwr, logHR, v, pi0.hat = "BH") {
 #' @param log.fc log fold-change (vector), usual null hypothesis is log.fc=0
 #' @param mu read depth per gene (vector, same length as log.fc)
 #' @param sig coefficient of variation (CV) per gene (vector, same length as log.fc)
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @references SN Hart, TM Therneau, Y Zhang, GA Poland, and J-P Kocher (2013). Calculating Sample Size Estimates for RNA Sequencing Data. Journal of Computational Biology 20: 970-978.
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{per-group sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -423,6 +426,7 @@ n.fdr.coxph <- function(fdr, pwr, logHR, v, pi0.hat = "BH") {
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
+#' @note For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
 #' @examples
 #' logFC = log(rep(c(1,2),c(900,100)));
 #' mu = rep(5,1000);
@@ -433,7 +437,7 @@ n.fdr.negbin <- function(fdr, pwr, log.fc, mu, sig, pi0.hat = "BH") {
   pi0 <- mean(log.fc == 0)
   a <- alpha.power.fdr(fdr, pwr, pi0, pi0.hat)
   res <- find.sample.size(a, pwr, average.power.hart,
-    log.fc = log.fc, mu = mu, sig = sig
+                          log.fc = log.fc, mu = mu, sig = sig
   )
   res$desired.fdr=fdr
   res$input.pi0=pi0
@@ -460,9 +464,9 @@ n.fdr.negbin <- function(fdr, pwr, log.fc, mu, sig, pi0.hat = "BH") {
 #' @param sigma standard deviation (vector or scalar)
 #' @param type type of t-test
 #' @param alternative one- or two-sided test
-#' @param pi0.hat approximation method for null proportion
+#' @param pi0.hat method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return  A list with the following components:
-#' \item{n}{a sample size estimate}
+#' \item{n}{sample size (per group) estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
@@ -480,7 +484,7 @@ n.fdr.ttest <- function(fdr, pwr, delta, sigma = 1, type = "two.sample", pi0.hat
   pi0 <- mean(delta == 0)
   a <- alpha.power.fdr(fdr, pwr, pi0, pi0.hat)
   res <- find.sample.size(a, pwr, average.power.t.test,
-    delta = delta, sigma = sigma, type = type, alternative = alternative
+                          delta = delta, sigma = sigma, type = type, alternative = alternative
   )
   res$desired.fdr=fdr
   res$input.pi0=pi0
@@ -517,6 +521,7 @@ n.fdr.ttest <- function(fdr, pwr, delta, sigma = 1, type = "two.sample", pi0.hat
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
+#' @note For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
 #' @examples
 #' #Here, calculating the sample size for the study involving many sign tests
 #' average.power.signtest;
@@ -574,7 +579,7 @@ find.sample.size <- function(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
 #' @param pi0 the proportion of tests with a true null hypothesis
-#' @param method approximation method includes: "HH" (p-value histogram height) , "HM" (p-value histogram mean),"BH" (Benjamini & Hochberg 1995),"Jung" (Jung 2005)
+#' @param method method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
 #' @return The fixed p-value threshold for multiple testing procedure
 #' @details
 #' To get the fixed p-value threshold for multiple testing procedure, 4 approximation methods are provided, they are Benjamini & Hochberg procedure (1995), Jung's formula (2005),
@@ -586,7 +591,7 @@ find.sample.size <- function(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 
 #'
 #' Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
 #'
-#' Ni Y, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+#' Ni Y, Seffernick A, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
 #'
 #' @examples
 #' alpha.power.fdr(fdr = 0.1, pwr = 0.9, pi0=0.9, method = "HH")
@@ -629,3 +634,140 @@ alpha.power.fdr <- function(fdr, pwr, pi0, method = "HH") {
 
   return(res)
 }
+
+
+
+#' @title Compute FDR and average power for a given sample size and effect size vector
+#' @description
+#' For a given fixed sample size and effect size vector,compute FDR and average power as a function of the p-value threshold alpha.
+#' @param n sample size
+#' @param avepow.func function to compute average power
+#' @param null.hypo string to evaluate null hypothesis
+#' @param alpha p-value threshold(s) to consider
+#' @param method method to estimate proportion pi0 of tests with a true null hypothesis, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
+#' @param ... additional arguments, including effect size vector for average power function
+#' @return  A list with the following components:
+#' \item{n}{input sample size}
+#' \item{avepow.func}{average power function}
+#' \item{null.hypo}{null hypothesis string}
+#' \item{pi0}{computed value of pi0}
+#' \item{method}{method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)}
+#' \item{other.args}{additional arguments}
+#' \item{res.tbl}{table of alpha, fdr, and average power}
+#' @references
+#' Pounds S and Cheng C, "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271.
+#'
+#' Gadbury GL, et al. (2004) Power and sample size estimation in high dimensional biology. Statistical Methods in Medical Research 13(4):325-38.
+#'
+#' Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
+#'
+#' Ni Y, Seffernick A, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+#'
+#' @examples
+#' n = 50; # number of events
+#' logHR = rep(c(0,0.5),c(950,50));
+#' v = rep(1,length(logHR));  # variance of predictor variable (vector)
+#' res = fdr.avepow(n,average.power.coxph,"logHR==0",logHR=logHR,v=v);
+#' res$pi0;
+#' head(res$res.tbl)
+#' @export
+fdr.avepow=function(n,                 # sample size
+                    avepow.func,       # function to compute average power
+                    null.hypo,         # string to evaluate null hypothesis
+                    alpha=1:100/1000,  # p-value threshold(s) to consider
+                    method="BH",       # method to estimate proportion $\pi_0$ of tests with true null
+                    ...)               # additional named arguments, including effect size vector for average power function
+
+{
+  alpha=alpha[(alpha>0)&(alpha<1)]
+  if (length(alpha)<1)
+    stop("Invalid alpha.")
+
+  n.alpha=length(alpha)
+  eff.size=eval(parse(text=null.hypo))
+  pi0=mean(eff.size)
+  if (is.na(pi0))
+    stop("Invalid null.hypo string.")
+
+  pwr=rep(NA,length(alpha))
+  for (i in 1:n.alpha)  pwr[i]=avepow.func(n,alpha[i],...)
+  fdr=fdr.power.alpha(alpha,pwr,pi0,method)
+
+  res.tbl=cbind(alpha=alpha,fdr=fdr,pwr=pwr)
+
+  res=list(n=n,                      # input sample size
+           avepow.func=avepow.func,  # average power function
+           null.hypo=null.hypo,      # null hypothesis string
+           pi0=pi0,                  # computed value of pi0
+           method=method,            # method to estimate $pi_0$
+           other.args=list(...),     # additional arguments
+           res.tbl=res.tbl)          # table of alpha, fdr, and average power
+
+  return(res)
+}
+
+
+#' @title Compute FDR for given p-value threshold, average power and proportion of tests with a true null
+#' @description
+#' Compute the FDR for given values of the p-value threshold alpha, average power, and proportion pi0 of tests with a true null hypothesis.
+#' @param alpha p-value threshold (vector)
+#' @param pwr average power
+#' @param pi0 actual proportion of tests with a true null hypothesis
+#' @param method method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)
+#' @return  FDR
+#' @references
+#' Pounds S and Cheng C, "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271.
+#'
+#' Gadbury GL, et al. (2004) Power and sample size estimation in high dimensional biology. Statistical Methods in Medical Research 13(4):325-38.
+#'
+#' Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
+#'
+#' Ni Y, Seffernick A, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+#'
+#' @examples
+#' alpha = 1:100/1000;
+#' pwr = rep(0.8,length(alpha));
+#' pi0 = 0.95;
+#' fdr.power.alpha(alpha,pwr,pi0,method="HH")
+#' @importFrom stats weighted.mean
+#' @export
+fdr.power.alpha=function(alpha,        # p-value threshold (vector)
+                         pwr,          # average power
+                         pi0,          # actual proportion of tests with a true null hypothesis
+                         method="HH")  # method to estimate the proportion of tests with a true null hypothesis
+{
+  if (method=="BH")
+  {
+    fdr=alpha/(pi0*alpha+(1-pi0)*pwr)
+    return(fdr)
+  }
+
+  if (method=="HH")
+  {
+    pi0.hat=pi0+(1-pi0)*(1-pwr)/(1-alpha)
+    fdr=pi0.hat*alpha/(pi0*alpha+(1-pi0)*pwr)
+    return(fdr)
+  }
+
+  if (method=="HM")
+  {
+    mns=c(alpha/2,(1+alpha)/2)
+    wgt=c(pi0*alpha+(1-pi0)*pwr,
+          pi0*(1-alpha)+(1-pi0)*(1-pwr))
+    mn.pval=weighted.mean(mns,wgt)
+    pi0.hat=2*mn.pval
+    fdr=pi0.hat*alpha/(pi0*alpha+(1-pi0)*pwr)
+    return(fdr)
+  }
+
+  if (method=="Jung")
+  {
+    pi0.hat=pi0
+    fdr=pi0.hat*alpha/(pi0*alpha+(1-pi0)*pwr)
+    return(fdr)
+  }
+
+  stop('Invalid pi0 method request: method must be "BH", "HM", "HH", or "Jung".')
+
+}
+

@@ -13,7 +13,7 @@ alpha.power.fdr(fdr, pwr, pi0, method = "HH")
 
 \item{pi0}{the proportion of tests with a true null hypothesis}
 
-\item{method}{approximation method includes: "HH" (p-value histogram height) , "HM" (p-value histogram mean),"BH" (Benjamini & Hochberg 1995),"Jung" (Jung 2005)}
+\item{method}{method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)}
 }
 \value{
 The fixed p-value threshold for multiple testing procedure
@@ -35,5 +35,5 @@ Gadbury GL, et al. (2004) Power and sample size estimation in high dimensional b
 
 Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
 
-Ni Y, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+Ni Y, Seffernick A, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
 }

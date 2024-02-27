@@ -1,7 +1,7 @@
 #' @title Compute the average power of many Cox regression models
 #' @description
 #' Compute the average power of many Cox regression models for a given number of events, p-value threshold, vector of effect sizes (log hazard ratio),and variance of predictor variables
-#' @param n number of event (scalar)
+#' @param n number of events (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param logHR log hazard ratio (vector)
 #' @param v variance of predictor variable (vector)
@@ -11,7 +11,7 @@
 #' v = rep(1, 1000);
 #' average.power.coxph(n = 50, alpha = 0.05, logHR = logHR, v = v)
 #' @references Hsieh, FY and Lavori, Philip W (2000) Sample-size calculations for the Cox proportional hazards regression model with non-binary covariates. Controlled Clinical Trials 21(6):552-560.
-#' @seealso \code{\link{power.cox}} for more details about power calculation of single-predictor Cox regression model
+#' @seealso \code{\link{power.cox}} for more details about power calculation of single-predictor Cox regression model. The power calculation is based on asymptotic normal approximation.
 #' @export
 average.power.coxph <- function(n, alpha, logHR, v) {
   m <- length(logHR)
@@ -39,7 +39,7 @@ average.power.coxph <- function(n, alpha, logHR, v) {
 #' mu = rep(5,1000);
 #' sig = rep(0.6,1000);
 #' average.power.hart(n = 50, alpha = 0.05,log.fc = logFC, mu = mu, sig = sig)
-#' @seealso \code{\link{power.hart}} for more details about power calculation of data under Negative Binomial distribution
+#' @seealso \code{\link{power.hart}} for more details about power calculation of data under Negative Binomial distribution. The power calculation is based on asymptotic normal approximation.
 #' @export
 average.power.hart <- function(n, alpha, log.fc, mu, sig) {
   alt <- (log.fc != 0)
@@ -51,14 +51,16 @@ average.power.hart <- function(n, alpha, log.fc, mu, sig) {
 
 
 #' @title Compute average power of rank-sum tests
-#' @param n per-group sample size (scalar)
+#' @description
+#' Compute average power of rank-sum tests
+#' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @return Average power estimate for multiple testing procedure
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
 #' average.power.ranksum(n = 50, alpha = 0.05, p=p)
-#' @seealso \code{\link{power.ranksum}} for more details about power calculation of rank-sum test
+#' @seealso \code{\link{power.ranksum}} for more details about power calculation of rank-sum test. The power calculation is based on asymptotic normal approximation.
 #' @export
 average.power.ranksum <- function(n, alpha, p) {
   alt <- (p != 0.5)
@@ -70,6 +72,8 @@ average.power.ranksum <- function(n, alpha, p) {
 
 
 #' @title Compute average power of many one-way ANOVA tests
+#' @description
+#' Compute average power of many one-way ANOVA tests
 #' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param theta sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test(vector)
@@ -97,7 +101,7 @@ average.power.oneway <- function(n, alpha, theta, k) {
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
 #' average.power.signtest(n = 50, alpha = 0.05, p=p)
-#' @seealso \code{\link{power.signtest}} for more details about power calculation of sign test
+#' @seealso \code{\link{power.signtest}} for more details about power calculation of sign test. The power calculation is based on asymptotic normal approximation.
 #' @importFrom stats qnorm pnorm
 #' @export
 average.power.signtest <- function(n, alpha, p) {
@@ -119,7 +123,7 @@ average.power.signtest <- function(n, alpha, p) {
 #' p1 = rep(c(0.8,0.5),c(100,900));
 #' p2 = rep(c(0.8,0.5),c(100,900));
 #' average.power.signrank(n = 50, alpha = 0.05, p1 = p1, p2 = p2)
-#' @seealso \code{\link{power.signrank}} for more details about power calculation of signed-rank test
+#' @seealso \code{\link{power.signrank}} for more details about power calculation of signed-rank test. The power calculation is based on asymptotic normal approximation.
 #' @export
 average.power.signrank <- function(n, alpha, p1, p2) {
   alt <- intersect(which(p1 == 0.5),which(p2 == 0.5))
@@ -219,6 +223,8 @@ average.power.tcorr=function(n,alpha,rho)
 
 
 #' @title Computer average power of many two proportion z-tests
+#' @description
+#' Computer average power of many two proportion z-tests.The power calculation of two proportion z-test is based on asymptotic normal approximation.
 #' @param n  per-group sample size (scalar)
 #' @param p1  probability in one group (vector)
 #' @param p2  probability in other group (vector)

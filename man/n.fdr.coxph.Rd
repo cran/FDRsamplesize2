@@ -15,11 +15,11 @@ n.fdr.coxph(fdr, pwr, logHR, v, pi0.hat = "BH")
 
 \item{v}{variance of predictor variable (vector)}
 
-\item{pi0.hat}{approximation method for null proportion}
+\item{pi0.hat}{method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)}
 }
 \value{
 A list with the following components:
-\item{n}{a sample size estimate}
+\item{n}{number of events estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}
@@ -32,6 +32,9 @@ A list with the following components:
 }
 \description{
 Find number of events needed to have a desired false discovery rate and average power for a large number of Cox regression models with non-binary covariates.
+}
+\note{
+For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
 }
 \examples{
 log.HR=log(rep(c(1,2),c(900,100)))

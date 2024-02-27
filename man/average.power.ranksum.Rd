@@ -7,7 +7,7 @@
 average.power.ranksum(n, alpha, p)
 }
 \arguments{
-\item{n}{per-group sample size (scalar)}
+\item{n}{sample size (scalar)}
 
 \item{alpha}{p-value threshold (scalar)}
 
@@ -24,5 +24,5 @@ p = rep(c(0.8,0.5),c(100,900));
 average.power.ranksum(n = 50, alpha = 0.05, p=p)
 }
 \seealso{
-\code{\link{power.ranksum}} for more details about power calculation of rank-sum test
+\code{\link{power.ranksum}} for more details about power calculation of rank-sum test. The power calculation is based on asymptotic normal approximation.
 }

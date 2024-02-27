@@ -1,5 +1,5 @@
 #' @title Compute the power of a single-predictor Cox regression model
-#' @description Use the formula of Hsieh and Lavori (2000) to compute the power of a single-predictor Cox model
+#' @description Use the formula of Hsieh and Lavori (2000) to compute the power of a single-predictor Cox model, which is based on asymptotic normal approximation.
 #' @param n number of events (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param logHR log hazard ratio (vector)
@@ -23,7 +23,7 @@ power.cox <- function(n,
 
 #' @title Compute power for RNA-seq experiments assuming Negative Binomial distribution
 #' @description
-#' Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a Negative Binomial distribution
+#' Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a Negative Binomial distribution. The power calculation is based on asymptotic normal approximation.
 #' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param log.fc log fold-change (vector), usual null hypothesis is log.fc=0
@@ -52,8 +52,8 @@ power.hart <- function(n,
 
 #' @title Compute power of the rank-sum test
 #' @description
-#' Compute power of rank-sum test; Uses formula of Noether (JASA 1987)
-#' @param n per-group sample size (scalar)
+#' Compute power of rank-sum test; Uses formula of Noether (JASA 1987), which is based on asymptotic normal approximation.
+#' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @details
@@ -99,7 +99,7 @@ power.oneway <- function(n, alpha, theta, k = 2) {
 
 #' @title Compute power of the sign test
 #' @description
-#' Use the Noether (1987) formula to compute the power of the sign test
+#' Use the Noether (1987) formula to compute the power of the sign test, which is based on asymptotic normal approximation.
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(X>0), as in Noether (JASA 1987)
@@ -124,7 +124,7 @@ power.signtest <- function(n, alpha, p) {
 
 #' @title Compute power of the signed-rank test
 #' @description
-#' Use the Noether (1987) formula to compute the power of the signed-rank test
+#' Use the Noether (1987) formula to compute the power of the signed-rank test, which is based on asymptotic normal approximation.
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p1 Pr(X>0), as in Noether (JASA 1987)

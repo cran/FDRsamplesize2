@@ -35,6 +35,9 @@ A list with the following components:
 \description{
 Determines the sample size needed to achieve the desired FDR and average power by given the proportion of true null hypothesis.
 }
+\note{
+For the test with power calculation based on asymptotic normal approximation, we suggest checking \code{FDRsamplesize2} calculation by simulation.
+}
 \examples{
 #Here, calculating the sample size for the study involving many sign tests
 average.power.signtest;

@@ -7,7 +7,7 @@
 power.ranksum(n, alpha, p)
 }
 \arguments{
-\item{n}{per-group sample size (scalar)}
+\item{n}{sample size (scalar)}
 
 \item{alpha}{p-value threshold (scalar)}
 
@@ -17,7 +17,7 @@ power.ranksum(n, alpha, p)
 Vector of power estimates for two-sided tests
 }
 \description{
-Compute power of rank-sum test; Uses formula of Noether (JASA 1987)
+Compute power of rank-sum test; Uses formula of Noether (JASA 1987), which is based on asymptotic normal approximation.
 }
 \details{
 In most applications, the null effect size will be designated by p = 0.5

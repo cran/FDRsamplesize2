@@ -25,13 +25,13 @@ n.fdr.ttest(
 
 \item{type}{type of t-test}
 
-\item{pi0.hat}{approximation method for null proportion}
+\item{pi0.hat}{method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height), "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)}
 
 \item{alternative}{one- or two-sided test}
 }
 \value{
 A list with the following components:
-\item{n}{a sample size estimate}
+\item{n}{sample size (per group) estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}

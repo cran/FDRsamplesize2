@@ -17,11 +17,11 @@ n.fdr.fisher(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = "BH")
 
 \item{alternative}{one- or two-sided test}
 
-\item{pi0.hat}{approximation method for null proportion}
+\item{pi0.hat}{method to estimate proportion \code{pi0} of tests with true null, including: "HH" (p-value histogram height) , "HM" (p-value histogram mean), "BH" (Benjamini & Hochberg 1995), "Jung" (Jung 2005)}
 }
 \value{
 A list with the following components:
-\item{n}{a sample size estimate}
+\item{n}{per-group sample size estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}

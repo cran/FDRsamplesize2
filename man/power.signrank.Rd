@@ -19,7 +19,7 @@ power.signrank(n, alpha, p1, p2)
 Vector of power estimates for two-sided tests
 }
 \description{
-Use the Noether (1987) formula to compute the power of the signed-rank test
+Use the Noether (1987) formula to compute the power of the signed-rank test, which is based on asymptotic normal approximation.
 }
 \details{
 In most applications, the null effect size will be designated by p1 = p2 = 0.5

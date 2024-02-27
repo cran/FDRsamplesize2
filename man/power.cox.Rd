@@ -19,7 +19,7 @@ power.cox(n, alpha, logHR, v)
 Vector of power estimates for two-sided test
 }
 \description{
-Use the formula of Hsieh and Lavori (2000) to compute the power of a single-predictor Cox model
+Use the formula of Hsieh and Lavori (2000) to compute the power of a single-predictor Cox model, which is based on asymptotic normal approximation.
 }
 \examples{
 logHR = log(rep(c(1, 2),c(900, 100)));

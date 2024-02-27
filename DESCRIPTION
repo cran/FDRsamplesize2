@@ -2,7 +2,7 @@ Package: FDRsamplesize2
 Type: Package
 Title: Computing Power and Sample Size for the False Discovery Rate in
         Multiple Applications
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: 
   c(person(given = "Yonghui",
            family = "Ni",
@@ -20,8 +20,8 @@ RoxygenNote: 7.2.3
 Suggests: testthat (>= 3.0.0)
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2023-11-27 17:49:21 UTC; yni54
+Packaged: 2024-02-26 22:25:36 UTC; yni54
 Author: Yonghui Ni [aut, cre],
   Stanley Pounds [aut]
 Repository: CRAN
-Date/Publication: 2023-11-27 19:10:05 UTC
+Date/Publication: 2024-02-27 03:50:03 UTC

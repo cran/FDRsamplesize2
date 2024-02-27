@@ -36,5 +36,5 @@ average.power.hart(n = 50, alpha = 0.05,log.fc = logFC, mu = mu, sig = sig)
 SN Hart, TM Therneau, Y Zhang, GA Poland, and J-P Kocher (2013). Calculating Sample Size Estimates for RNA Sequencing Data. Journal of Computational Biology 20: 970-978.
 }
 \seealso{
-\code{\link{power.hart}} for more details about power calculation of data under Negative Binomial distribution
+\code{\link{power.hart}} for more details about power calculation of data under Negative Binomial distribution. The power calculation is based on asymptotic normal approximation.
 }

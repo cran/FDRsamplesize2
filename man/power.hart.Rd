@@ -21,7 +21,7 @@ power.hart(n, alpha, log.fc, mu, sig)
 Vector of power estimates for the set of two-sided tests
 }
 \description{
-Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a Negative Binomial distribution
+Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a Negative Binomial distribution. The power calculation is based on asymptotic normal approximation.
 }
 \details{
 This function is based on equation (1) of Hart et al (2013). It assumes a Negative Binomial model for RNA-seq read counts and equal sample size per group.

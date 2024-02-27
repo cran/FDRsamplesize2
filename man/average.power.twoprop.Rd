@@ -21,7 +21,7 @@ average.power.twoprop(n, alpha, p1, p2, alternative)
 Average power estimate for multiple testing procedure
 }
 \description{
-Computer average power of many two proportion z-tests
+Computer average power of many two proportion z-tests.The power calculation of two proportion z-test is based on asymptotic normal approximation.
 }
 \examples{
 set.seed(1234);

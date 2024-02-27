@@ -24,5 +24,5 @@ p = rep(c(0.8,0.5),c(100,900));
 average.power.signtest(n = 50, alpha = 0.05, p=p)
 }
 \seealso{
-\code{\link{power.signtest}} for more details about power calculation of sign test
+\code{\link{power.signtest}} for more details about power calculation of sign test. The power calculation is based on asymptotic normal approximation.
 }

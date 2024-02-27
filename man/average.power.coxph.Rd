@@ -7,7 +7,7 @@
 average.power.coxph(n, alpha, logHR, v)
 }
 \arguments{
-\item{n}{number of event (scalar)}
+\item{n}{number of events (scalar)}
 
 \item{alpha}{p-value threshold (scalar)}
 
@@ -30,5 +30,5 @@ average.power.coxph(n = 50, alpha = 0.05, logHR = logHR, v = v)
 Hsieh, FY and Lavori, Philip W (2000) Sample-size calculations for the Cox proportional hazards regression model with non-binary covariates. Controlled Clinical Trials 21(6):552-560.
 }
 \seealso{
-\code{\link{power.cox}} for more details about power calculation of single-predictor Cox regression model
+\code{\link{power.cox}} for more details about power calculation of single-predictor Cox regression model. The power calculation is based on asymptotic normal approximation.
 }
